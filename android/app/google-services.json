@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1068326841393",
+    "project_id": "waterbinduwa",
+    "storage_bucket": "waterbinduwa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068326841393:android:5f2f4b0360d03fbfdb3910",
+        "android_client_info": {
+          "package_name": "com.waterbinduwa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068326841393-17l70sgf2u3lfblamu3ehmpk8roavf60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGTaGxG9sBhhSOQEE7cgGNeA_ci8YFuLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068326841393-17l70sgf2u3lfblamu3ehmpk8roavf60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
