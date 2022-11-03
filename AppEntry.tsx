@@ -1,4 +1,5 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation, useNavigationContainerRef } from "@react-navigation/native";
+import { useEffect } from "react";
 import NavigatorHome from "./src/routes/home-navigation";
 import { MainNavigator } from "./src/routes/main-navigation";
 import { Home } from "./src/views/home";
