@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import auth from "@react-native-firebase/auth"
 import { useNavigation } from "@react-navigation/native";
+import firestore from '@react-native-firebase/firestore';
 
 export function Home() {
     const navigation = useNavigation();
@@ -11,10 +12,16 @@ export function Home() {
         navigation.navigate("Login" as never);
     }
 
+    const add_doc = async () => {
+        const collection_ref = firestore().collection("hello");
+        await collection_ref.add({ hello: "world" })
+    }
+
     return (
         <View>
             <Text>This is the home screen</Text>
             <Button title="Logout" onPress={logout}/>
+            <Button title="Test Collection" onPress={add_doc}/>
         </View>
     )
 }
