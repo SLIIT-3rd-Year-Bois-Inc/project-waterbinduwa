@@ -4,6 +4,7 @@ import Search from "../../views/search";
 import { useNavigationContainerRef } from "@react-navigation/native";
 import { useEffect } from "react";
 import auth from '@react-native-firebase/auth';
+import Profile from "../../views/profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,7 @@ export default function NavigatorHome({ navigation }) {
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="Search" component={Search}/>
+            <Tab.Screen name="Profile" component={Profile}/>
         </Tab.Navigator>
     )
 } 
