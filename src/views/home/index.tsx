@@ -17,11 +17,16 @@ export function Home() {
         await collection_ref.add({ hello: "world" })
     }
 
+    const goto_comments = async () => {
+        navigation.navigate("Comments" as never);
+    }
+
     return (
         <View>
             <Text>This is the home screen</Text>
             <Button title="Logout" onPress={logout}/>
             <Button title="Test Collection" onPress={add_doc}/>
+            <Button title="Comments" onPress={goto_comments}/>
         </View>
     )
 }
