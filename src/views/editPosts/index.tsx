@@ -5,12 +5,11 @@ import AddPostAddImage from '../../components/addPost-addImage';
 import EventPostNavBtns from '../../components/event-post-navBtns';
 
 
-const AddPosts:React.FC<{route:any}>=(props)=> {
-  const [value, onChangeText] = React.useState('');
-  const onPostButtonClick = () => { }
+const EditPosts:React.FC<{route:any}>=(props)=> {
+  const [value, onChangeText] = React.useState('Useless Multiline Placeholder');
+
   return (
     <View style={styles.container}>
-      <EventPostNavBtns routeName={props.route.name} />
 
       <TextInput
         multiline
@@ -73,4 +72,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default AddPosts;
+export default EditPosts;

@@ -5,6 +5,8 @@ import Login from "../../views/login";
 import Comments from "../../views/comments";
 import AddPost from "../../views/addPosts";
 import AddEvent from "../../views/addEvents";
+import EditEvent from "../../views/editEvent";
+import EditPosts from "../../views/editPosts";
 
 
 const Stack = createStackNavigator();
@@ -18,6 +20,8 @@ export function MainNavigator() {
             <Stack.Screen name="Comments" component={Comments}/>
             <Stack.Screen name="addPosts" component={AddPost}/>
             <Stack.Screen name="addEvent" component={AddEvent}/>
+            <Stack.Screen name="editEvent" component={EditEvent}/>
+            <Stack.Screen name="editPosts" component={EditPosts}/>
 
         </Stack.Navigator>
     )
