@@ -1,74 +1,29 @@
 import React from 'react'
-import { View ,Text,StyleSheet,Pressable} from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
+import AddEventForm from '../../components/addEvent-form'
 import AddPostAddImage from '../../components/addPost-addImage'
+import EventPostNavBtns from '../../components/event-post-navBtns'
 
-function AddEvent() {
-    const onPostButtonClick=()=>{}
-  return (
-    <View style={styles.container}>
-        <View style={styles.postEventBtnContainer}>
-        <Pressable
-          onPress={onPostButtonClick}
-          style={styles.postButton}
-        ><Text style={styles.btnText}>Post</Text>
+const AddEvent: React.FC<{ route: any }> = (props) => {
 
-        </Pressable>
-        <Pressable
-          onPress={onPostButtonClick}
-          style={styles.eventButton}
-        ><Text style={styles.btnText}>Event</Text>
+    const onPostButtonClick = () => { }
+    return (
+        <View style={styles.container}>
+            <EventPostNavBtns routeName={props.route.name}/>
 
-        </Pressable>
+            <AddPostAddImage btnName="Add a Cover Image" />
+            <AddEventForm />
 
 
-      </View>
-       
-        <AddPostAddImage btnName="Add a Cover Image"/>
-    </View>
-  )
+        </View>
+    )
 }
 const styles = StyleSheet.create({
     container: {
-      flexDirection: "column",
-      padding: 5
+        flexDirection: "column",
+        padding: 5
     },
-    eventButton: {
-      borderTopRightRadius: 15,
-      backgroundColor: '#16DAED',
-      paddingLeft: 30,
-      paddingRight: 30,
-      paddingTop: 4,
-      paddingBottom: 4,
-      borderLeftColor: 'white',
-      borderLeftWidth: 1
-    }
-    ,
-    postButton: {
-      borderBottomLeftRadius: 15,
-      backgroundColor: '#16DAED',
-      paddingLeft: 30,
-      paddingRight: 30,
-      paddingTop: 4,
-      paddingBottom: 4
-    },
-    btnText: {
-      color: 'white',
-      fontWeight: 'bold',
-      fontSize:16
-    },
-    postEventBtnContainer: {
-      display: 'flex',
-      flexDirection: 'row'
-    },
-    textArea: {
-      display: 'flex',
-      maxHeight: '50%',
-      justifyContent: 'flex-start',
-      marginTop: 10,
-      marginBottom: 10,
-      backgroundColor: '#C5C5C547',
-    },
-    
-  });
+
+});
 
 export default AddEvent

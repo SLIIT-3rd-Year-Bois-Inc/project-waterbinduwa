@@ -2,29 +2,15 @@ import React from 'react'
 import { Text, View, StyleSheet, Button, Pressable, TextInput } from 'react-native'
 
 import AddPostAddImage from '../../components/addPost-addImage';
+import EventPostNavBtns from '../../components/event-post-navBtns';
 
 
-function AddPosts() {
+const AddPosts:React.FC<{route:any}>=(props)=> {
   const [value, onChangeText] = React.useState('Useless Multiline Placeholder');
   const onPostButtonClick = () => { }
   return (
     <View style={styles.container}>
-      <View style={styles.postEventBtnContainer}>
-        <Pressable
-          onPress={onPostButtonClick}
-          style={styles.postButton}
-        ><Text style={styles.btnText}>Post</Text>
-
-        </Pressable>
-        <Pressable
-          onPress={onPostButtonClick}
-          style={styles.eventButton}
-        ><Text style={styles.btnText}>Event</Text>
-
-        </Pressable>
-
-
-      </View>
+      <EventPostNavBtns routeName={props.route.name} />
 
       <TextInput
         multiline
