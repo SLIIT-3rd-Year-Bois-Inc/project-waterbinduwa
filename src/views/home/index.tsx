@@ -27,6 +27,12 @@ export function Home() {
     const goto_addEvent = async () => {
         navigation.navigate("addEvent" as never);
     }
+    const goto_editEvent = async () => {
+        navigation.navigate("editEvent" as never);
+    }
+    const goto_editPost = async () => {
+        navigation.navigate("editPosts" as never);
+    }
 
     return (
         <View>
@@ -36,6 +42,8 @@ export function Home() {
             <Button title="Comments" onPress={goto_comments}/>
             <Button title="add Post" onPress={goto_addPost}/>
             <Button title="add Event" onPress={goto_addEvent}/>
+            <Button title="edit Event" onPress={goto_editEvent}/>
+            <Button title="edit post" onPress={goto_editPost}/>
         </View>
     )
 }
