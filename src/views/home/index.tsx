@@ -4,6 +4,7 @@ import auth from "@react-native-firebase/auth"
 import { useNavigation } from "@react-navigation/native";
 import firestore from '@react-native-firebase/firestore';
 import Post from "../../components/posts";
+import Event from "../../components/event/Index";
 
 
 export function Home() {
@@ -37,6 +38,9 @@ export function Home() {
     const goto_posts = async () => {
         navigation.navigate("posts" as never);
     }
+    const goto_event = async () => {
+        navigation.navigate("events" as never);
+    }
 
     return (
         <View>
@@ -50,9 +54,11 @@ export function Home() {
             <Button title="edit Event" onPress={goto_editEvent}/>
             <Button title="edit post" onPress={goto_editPost}/>
             <Button title="post" onPress={goto_posts}/>
+            <Button title="event" onPress={goto_event}/>
             <Post/>
+            <Event/>
             <Post/>
-            <Post/>
+            
             </ScrollView>
             
         </View>

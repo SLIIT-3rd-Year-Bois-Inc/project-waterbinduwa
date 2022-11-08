@@ -17,7 +17,7 @@ function PostEventHeader() {
             </View>
 
             <View>
-                <Text>
+                <Text style={styles.ellipsis}>
                     <Icon name="ellipsis-h" size={20} color="#000" />
                 </Text>
             </View>
@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
     },
     date: {
         color: 'black'
+    },
+    ellipsis:{
+        marginRight:6
     }
 });
 
