@@ -5,7 +5,7 @@ import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 
-export default function Login() {
+export default function OrgRegister() {
     const [username, setUserName] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
@@ -29,9 +29,9 @@ export default function Login() {
         <View>
             <ScrollView>
             <View style={styles.logo_container}>
-              <Text style={[styles.MainfontSize]}>Register</Text>
-              <Text style={[styles.secondFont]}>Give us some details about yourself so we can identify you.</Text>
-              <Text style={[styles.secondFont]}>Click here to register Club or Org.</Text>
+              <Text style={[styles.MainfontSize, styles.gray_text]}>Register</Text>
+              <Text style={[styles.secondFont, styles.black_text]}>Give us some details about yourself so we can identify you.</Text>
+              <Text style={[styles.secondFont, styles.gray_text]}>Click here to register Club or Org.</Text>
                 <View style={styles.form}>
 
                     <View style={{ paddingVertical: 5 }}>
@@ -129,6 +129,12 @@ const styles = StyleSheet.create({
     },
     teal_text: {
         color: "#11acba"
+    },
+    gray_text: {
+        color: "#7a7979"
+    },
+    black_text: {
+        color: "#000000"
     },
     MainfontSize: {
         fontSize: 40
