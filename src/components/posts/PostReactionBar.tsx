@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable ,TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -10,21 +10,21 @@ function PostReactionBar() {
 
         <View style={styles.container} >
             <View style={styles.reactions}>
-                <View style={styles.reaction}><Icon name="heart" size={20} color="black" /><Text style={styles.count}>5</Text></View>
-                <View style={styles.reaction}><Icon name="thumbs-up" size={20} color="black" /><Text style={styles.count}>5</Text></View>
-                <View style={styles.reaction}><Icon name="thumbs-down" size={20} color="black" /><Text style={styles.count}>5</Text></View>
+                <TouchableOpacity style={styles.reaction}><Icon name="heart" size={20} color="black" /><Text style={styles.count}>5</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.reaction}><Icon name="thumbs-up" size={20} color="black" /><Text style={styles.count}>5</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.reaction}><Icon name="thumbs-down" size={20} color="black" /><Text style={styles.count}>5</Text></TouchableOpacity>
 
             </View>
             <View style={styles.commentShare}>
-                <View style={styles.reaction}><MaterialIcon name="comment-outline" size={20} color="black" /><Text style={styles.count}>5</Text></View>
-                <Pressable
+                <TouchableOpacity style={styles.reaction}><MaterialIcon name="comment-outline" size={20} color="black" /><Text style={styles.count}>5</Text></TouchableOpacity>
+                <TouchableOpacity
                     onPress={handleshareClick}
                     style={styles.shareBtn}
                 ><Text style={styles.sharebtnText}>
                         Share
                     </Text>
 
-                </Pressable>
+                </TouchableOpacity>
             </View>
 
         </View>

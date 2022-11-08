@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -10,7 +10,7 @@ function EventReactionBar() {
 
         <View style={styles.container} >
             <View style={styles.reactions}>
-                <Pressable
+                <TouchableOpacity
                     onPress={handleshareClick}
                     style={styles.reactionBtn}
                 >
@@ -22,8 +22,8 @@ function EventReactionBar() {
                         11
                     </Text>
 
-                </Pressable>
-                <Pressable
+                </TouchableOpacity>
+                <TouchableOpacity
                     onPress={handleshareClick}
                     style={styles.reactionBtn}
                 >
@@ -35,18 +35,18 @@ function EventReactionBar() {
                         11
                     </Text>
 
-                </Pressable>
+                </TouchableOpacity>
             </View>
             <View style={styles.commentShare}>
-                <View style={styles.reaction}><MaterialIcon name="comment-outline" size={20} color="black" /><Text style={styles.count}>5</Text></View>
-                <Pressable
+                <TouchableOpacity style={styles.reaction}><MaterialIcon name="comment-outline" size={20} color="black" /><Text style={styles.count}>5</Text></TouchableOpacity>
+                <TouchableOpacity
                     onPress={handleshareClick}
                     style={styles.shareBtn}
                 ><Text style={styles.sharebtnText}>
                         Share
                     </Text>
 
-                </Pressable>
+                </TouchableOpacity>
             </View>
 
         </View>

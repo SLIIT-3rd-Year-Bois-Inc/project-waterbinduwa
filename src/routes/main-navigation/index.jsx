@@ -8,6 +8,7 @@ import AddEvent from "../../views/addEvents";
 import EditEvent from "../../views/editEvent";
 import EditPosts from "../../views/editPosts";
 import Event from "../../components/event/Index";
+import AddReview from "../../views/addReview";
 
 
 const Stack = createStackNavigator();
@@ -25,8 +26,7 @@ export function MainNavigator() {
             <Stack.Screen name="editPosts" component={EditPosts}/>
             <Stack.Screen name="posts" component={Posts}/>
             <Stack.Screen name="events" component={Event}/>
-
-
+            <Stack.Screen name="addReview" component={AddReview} />
         </Stack.Navigator>
     )
 }
