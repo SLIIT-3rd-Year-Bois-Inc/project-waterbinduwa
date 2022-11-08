@@ -4,8 +4,8 @@ import Post from "../../components/posts";
 
 export default function Posts() {
     return (
-        <ScrollView>
+
             <Post/>
-        </ScrollView>
+   
     )
 }

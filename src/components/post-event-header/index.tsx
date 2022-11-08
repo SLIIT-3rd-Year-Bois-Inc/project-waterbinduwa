@@ -1,26 +1,30 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet,TouchableOpacity,Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
 function PostEventHeader() {
+    const handleshareClick=()=>{
+
+    }
     return (
         <View style={styles.container}>
             <View style={styles.imageNameContainer}>
                 <View style={styles.imageContainer}>
 
                 </View>
-                <View>
+                <TouchableOpacity>
                     <Text style={styles.userName}>This is Name</Text>
                     <Text style={styles.date}>1 day ago</Text>
-                </View>
+                </TouchableOpacity>
 
             </View>
 
-            <View>
-                <Text>
+            <TouchableOpacity>
+                <Text style={styles.ellipsis}>
                     <Icon name="ellipsis-h" size={20} color="#000" />
                 </Text>
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -53,6 +57,9 @@ const styles = StyleSheet.create({
     },
     date: {
         color: 'black'
+    },
+    ellipsis:{
+        marginRight:6
     }
 });
 

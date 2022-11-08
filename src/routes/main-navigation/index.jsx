@@ -7,9 +7,11 @@ import AddPost from "../../views/addPosts";
 import AddEvent from "../../views/addEvents";
 import EditEvent from "../../views/editEvent";
 import EditPosts from "../../views/editPosts";
+import Event from "../../components/event/Index";
 import AddReview from "../../views/addReview";
 import OrgReg from "../../views/register-org"
 import RegPick from "../../views/regPicker"
+
 
 const Stack = createStackNavigator();
 
@@ -25,7 +27,7 @@ export function MainNavigator() {
             <Stack.Screen name="editEvent" component={EditEvent}/>
             <Stack.Screen name="editPosts" component={EditPosts}/>
             <Stack.Screen name="posts" component={Posts}/>
-            <Stack.Screen name="events" component={EditPosts}/>
+            <Stack.Screen name="events" component={Event}/>
             <Stack.Screen name="addReview" component={AddReview} />
             <Stack.Screen name="orgRegister" component={OrgReg} />
             <Stack.Screen name="regpicker" component={RegPick} />
