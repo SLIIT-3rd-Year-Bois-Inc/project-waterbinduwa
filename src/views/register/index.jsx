@@ -6,8 +6,14 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function OrgRegister() {
-    const [username, setUserName] = useState("");
+    const [orgName, setOrgName] = useState("");
+    const [intro, setIntro] = useState("");
+    const [orgEmail, setOrgEmail] = useState("");
+    const [orgPhone, setOrgPhone] = useState("");
+    const [website, setWebsite] = useState("");
     const [address, setAddress] = useState("");
+    const [username, setUserName] = useState("");
+    const [position, setPosition] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [conPassword, setConPassword] = useState("");
@@ -29,26 +35,50 @@ export default function OrgRegister() {
         <View>
             <ScrollView>
             <View style={styles.logo_container}>
-              <Text style={[styles.MainfontSize, styles.gray_text]}>Register</Text>
+              <Text style={[styles.MainfontSize, styles.gray_text]}>Register Org. or Club</Text>
               <Text style={[styles.secondFont, styles.black_text]}>Give us some details about yourself so we can identify you.</Text>
-              <Text style={[styles.secondFont, styles.gray_text]}>Click here to register Club or Org.</Text>
+           
                 <View style={styles.form}>
 
                     <View style={{ paddingVertical: 5 }}>
-                        <Text style={[styles.label_padding, styles.teal_text]}>Name</Text>
-                        <TextInput value={username} onChangeText={text => {setUserName(text)}} style={styles.text_input} placeholder="Name" />
+                        <Text style={[styles.label_padding, styles.teal_text]}>Organisation or club name</Text>
+                        <TextInput value={orgName} onChangeText={text => {setOrgName(text)}} style={styles.text_input} placeholder="Enter Details" />
+                    </View>
+                    <View style={{ paddingVertical: 5 }}>
+                        <Text style={[styles.label_padding, styles.teal_text]}>Introduction</Text>
+                        <TextInput value={intro} onChangeText={text => {setIntro(text)}} style={styles.text_input} placeholder="Introduction" />
+                    </View>
+                    <View style={{ paddingVertical: 5 }}>
+                        <Text style={[styles.label_padding, styles.teal_text]}>Email of org. or club</Text>
+                        <TextInput value={orgEmail} onChangeText={text => {setOrgEmail(text)}} style={styles.text_input} placeholder="Email" />
+                    </View>
+                    <View style={{ paddingVertical: 5 }}>
+                        <Text style={[styles.label_padding, styles.teal_text]}>Phone of org. or club</Text>
+                        <TextInput value={orgPhone} onChangeText={text => {setOrgPhone(text)}} style={styles.text_input} placeholder="Phone" />
+                    </View>
+                    <View style={{ paddingVertical: 5 }}>
+                        <Text style={[styles.label_padding, styles.teal_text]}>Website</Text>
+                        <TextInput value={website} onChangeText={text => {setWebsite(text)}} style={styles.text_input} placeholder="Website" />
                     </View>
                     <View style={{ paddingVertical: 5 }}>
                         <Text style={[styles.label_padding, styles.teal_text]}>Address</Text>
                         <TextInput value={address} onChangeText={text => {setAddress(text)}} style={styles.text_input} placeholder="Address" />
                     </View>
                     <View style={{ paddingVertical: 5 }}>
-                        <Text style={[styles.label_padding, styles.teal_text]}>Email</Text>
-                        <TextInput value={email} onChangeText={text => {setEmail(text)}} style={styles.text_input} placeholder="Email" />
+                        <Text style={[styles.label_padding, styles.teal_text]}>Your position</Text>
+                        <TextInput value={position} onChangeText={text => {setPosition(text)}} style={styles.text_input} placeholder="Position" />
                     </View>
                     <View style={{ paddingVertical: 5 }}>
-                        <Text style={[styles.label_padding, styles.teal_text]}>Phone</Text>
-                        <TextInput value={phone} onChangeText={text => {setPhone(text)}} style={styles.text_input} placeholder="Phone" />
+                        <Text style={[styles.label_padding, styles.teal_text]}>Your Name</Text>
+                        <TextInput value={username} onChangeText={text => {setUserName(text)}} style={styles.text_input} placeholder="Your Name" />
+                    </View>
+                    <View style={{ paddingVertical: 5 }}>
+                        <Text style={[styles.label_padding, styles.teal_text]}>Your Email</Text>
+                        <TextInput value={email} onChangeText={text => {setEmail(text)}} style={styles.text_input} placeholder="Your Email" />
+                    </View>
+                    <View style={{ paddingVertical: 5 }}>
+                        <Text style={[styles.label_padding, styles.teal_text]}>Your Phone</Text>
+                        <TextInput value={phone} onChangeText={text => {setPhone(text)}} style={styles.text_input} placeholder="your phone" />
                     </View>
                     
                     <Text style={[styles.label_padding, styles.teal_text, { paddingVertical: 5 }]}>Your Password</Text>
@@ -64,7 +94,7 @@ export default function OrgRegister() {
                         style={styles.text_input}
                         secureTextEntry={true}
                         placeholder="Confirm Password"
-                    />
+                    /> 
 
                     {/* <Text style={[{ textAlign: "right", paddingHorizontal: 10, paddingTop: 8 }, styles.teal_text]}>Forgot Password?</Text> */}
                     <View style={[styles.button_wrapper, {paddingVertical: 20}]}>

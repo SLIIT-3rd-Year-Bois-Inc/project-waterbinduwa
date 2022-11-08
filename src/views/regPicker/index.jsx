@@ -13,7 +13,7 @@ export default function RegPicker() {
     }
 
     const goto_vd = () => {
-        navigation.navigate("orgRegister");
+        navigation.navigate("volRegister");
     }
     
     return (
