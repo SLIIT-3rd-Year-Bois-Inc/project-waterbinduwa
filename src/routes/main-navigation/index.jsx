@@ -22,6 +22,9 @@ export function MainNavigator() {
             <Stack.Screen name="addEvent" component={AddEvent}/>
             <Stack.Screen name="editEvent" component={EditEvent}/>
             <Stack.Screen name="editPosts" component={EditPosts}/>
+            <Stack.Screen name="posts" component={Posts}/>
+            <Stack.Screen name="events" component={EditPosts}/>
+
 
         </Stack.Navigator>
     )
