@@ -38,6 +38,9 @@ export function Home() {
         navigation.navigate("posts" as never);
     }
 
+    const goto_add_review = () => {
+        navigation.navigate("addReview" as never);
+    }
     return (
         <View>
             <ScrollView>
@@ -50,6 +53,7 @@ export function Home() {
             <Button title="edit Event" onPress={goto_editEvent}/>
             <Button title="edit post" onPress={goto_editPost}/>
             <Button title="post" onPress={goto_posts}/>
+            <Button title="addReview" onPress={goto_add_review}/>
             <Post/>
             <Post/>
             <Post/>
