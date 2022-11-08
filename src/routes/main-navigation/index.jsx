@@ -9,7 +9,8 @@ import EditEvent from "../../views/editEvent";
 import EditPosts from "../../views/editPosts";
 import Event from "../../components/event/Index";
 import AddReview from "../../views/addReview";
-import OrgReg from "../../views/register-org"
+import OrgReg from "../../views/register/index"
+import VolReg from "../../views/register2/index2";
 import RegPick from "../../views/regPicker"
 
 
@@ -30,6 +31,7 @@ export function MainNavigator() {
             <Stack.Screen name="events" component={Event}/>
             <Stack.Screen name="addReview" component={AddReview} />
             <Stack.Screen name="orgRegister" component={OrgReg} />
+            <Stack.Screen name="volRegister" component={VolReg} />
             <Stack.Screen name="regpicker" component={RegPick} />
         </Stack.Navigator>
     )
