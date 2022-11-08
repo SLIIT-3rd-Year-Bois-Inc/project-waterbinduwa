@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View ,StyleSheet,Image} from 'react-native'
 import PostEventHeader from '../post-event-header'
-import PostReactionBar from '../post-reaction-bar/PostReactionBar';
+import PostReactionBar from './PostReactionBar';
 
 function Post() {
     return (
