@@ -23,7 +23,6 @@ export default function AddReview({ name }: AddReviewProps) {
                     <Text>Write  something about</Text>
                     <Text style={styles.name}>{name ?? "Some Foundation"}</Text>
                 </View>
-
             </View>
             <TouchableOpacity onPress={select_image}>
                 <Text>Add Images</Text>
