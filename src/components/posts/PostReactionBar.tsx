@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
     , reaction: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginRight: 5,
+        marginLeft:5
 
     }, shareBtn: {
         display: 'flex',
