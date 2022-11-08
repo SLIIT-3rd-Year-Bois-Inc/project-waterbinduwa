@@ -3,7 +3,7 @@ import { Text, View, StyleSheet,TouchableOpacity,Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-function PostEventHeader() {
+function PostEventHeader(props:any) {
     const handleshareClick=()=>{
 
     }
@@ -20,7 +20,7 @@ function PostEventHeader() {
 
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{props.toggleModel()}}>
                 <Text style={styles.ellipsis}>
                     <Icon name="ellipsis-h" size={20} color="#000" />
                 </Text>
