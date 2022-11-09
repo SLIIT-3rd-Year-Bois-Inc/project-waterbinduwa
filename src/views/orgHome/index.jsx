@@ -76,14 +76,14 @@ export default function OrgHome() {
                     <View style={{ flex: 1, backgroundColor: "teal", padding : 20, marginLeft : 5   }} onPress={do_post}>
                         <TouchableOpacity onPress={do_post} >
                         <Image source={require('./buttons/posts.png')} style={{ width: 95, height: 95}} />
-                        <Text>About us</Text>
+                        <Text>Posts</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style={{ flex: 1, backgroundColor: "teal", padding : 20, marginLeft : 5  }} onPress={do_review}>
                         <TouchableOpacity onPress={do_review} >
                         <Image source={require('./buttons/rev.png')} style={{ width: 95, height: 95 }} />
-                        <Text>About us</Text>
+                        <Text>Reviews</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

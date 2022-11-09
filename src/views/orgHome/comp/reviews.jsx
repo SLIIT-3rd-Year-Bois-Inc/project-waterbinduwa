@@ -9,12 +9,22 @@ export default function Reviews() {
     const navigation = useNavigation();
 
     const para = "Reviews";
+
+    const add_rev = () => {
+        navigation.navigate("addReview");
+    }
    
 
     return (
         <View>
             <View style={[styles.top]}>
-             <Text>About us</Text>
+
+           
+            <TouchableOpacity onPress={add_rev} >
+                             <Image source={require('./plus.png')} style={{ width: 40, height: 40 }} />
+            </TouchableOpacity>
+
+             <Text>Add reviews</Text>
              <Text>{para}</Text>              
             </View>
         </View>
