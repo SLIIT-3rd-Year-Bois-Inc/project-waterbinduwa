@@ -17,16 +17,37 @@ export default function Reviews() {
 
     return (
         <View>
-            <View style={[styles.top]}>
 
-           
-            <TouchableOpacity onPress={add_rev} >
-                             <Image source={require('./plus.png')} style={{ width: 40, height: 40 }} />
-            </TouchableOpacity>
+            <View style={[ {flexDirection: "row", paddingBottom : 20}]}>
 
-             <Text>Add reviews</Text>
-             <Text>{para}</Text>              
+            <View style={[styles.button_wrapper, {flex: 6}]}>
+            <Text style={{paddingLeft : 20, paddingTop : 15, color : "black", fontSize : 25, fontWeight : "bold"}}>Reviews</Text>
             </View>
+
+            <View style={[styles.button_wrapper, {flex: 1}]}>
+                <TouchableOpacity onPress={add_rev} style={{paddingTop : 8 }}>
+                            <Image source={require('./plus.png')} style={{ width: 40, height: 40 }} />
+                </TouchableOpacity>
+            </View>
+            </View> 
+
+
+            <View style={[styles.top, {marginBottom : 15}]}>
+            <Text style={{paddingLeft : 20, paddingTop : 15, color : "black", fontSize : 20, fontWeight : "bold"}}>Review by : Linda Stirling</Text>
+            <Text style={{paddingLeft : 20, paddingRight:10, paddingBottom : 30,  paddingTop : 17, color : "black", fontSize : 17}}>Rotaract originally began as a Rotary International youth program in 1968 at Charlotte North Rotary Club in Charlotte, North Carolina, United States, and has grown into a major organization of 10,680 clubs spread around the world and over 203,000.</Text>
+            </View>
+
+            <View style={[styles.top, {marginBottom : 15}]}>
+            <Text style={{paddingLeft : 20, paddingTop : 15, color : "black", fontSize : 20, fontWeight : "bold"}}>Review by : Linda Stirling</Text>
+            <Text style={{paddingLeft : 20, paddingRight:10, paddingBottom : 30,  paddingTop : 17, color : "black", fontSize : 17}}>Rotaract originally began as a Rotary International youth program in 1968 at Charlotte North Rotary Club in Charlotte, North Carolina, United States, and has grown into a major organization of 10,680 clubs spread around the world and over 203,000.</Text>
+            </View>
+
+            <View style={[styles.top, {marginBottom : 15}]}>
+            <Text style={{paddingLeft : 20, paddingTop : 15, color : "black", fontSize : 20, fontWeight : "bold"}}>Review by : Linda Stirling</Text>
+            <Text style={{paddingLeft : 20, paddingRight:10, paddingBottom : 30,  paddingTop : 17, color : "black", fontSize : 17}}>Rotaract originally began as a Rotary International youth program in 1968 at Charlotte North Rotary Club in Charlotte, North Carolina, United States, and has grown into a major organization of 10,680 clubs spread around the world and over 203,000.</Text>
+            </View>
+
+
         </View>
     )
 }
