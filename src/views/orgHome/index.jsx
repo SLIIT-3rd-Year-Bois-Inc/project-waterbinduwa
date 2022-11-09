@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity, ImageBackground } from "react-native";
 const logo = require("../../assets/logo.png");
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
@@ -7,11 +7,13 @@ import { ScrollView } from "react-native-gesture-handler";
 import AboutUs from "./comp/aboutus";
 import Posts from "./comp/posts";
 import Reviews from "./comp/reviews";
+import { baseGestureHandlerProps } from "react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon";
+
 
 export default function OrgHome() {
     const navigation = useNavigation();
 
-    const title = "ROTO OF SLIIT";
+    const title = "Rotoract Club OF SLIIT";
 
     const [aboutUs, setAboutUs] = useState(true);
     const [posts, setPosts] = useState(false);
@@ -42,24 +44,29 @@ export default function OrgHome() {
         <View>
             <ScrollView>
             
-            <View style={styles.top}>
-            <Text style={[styles.MainfontSize, styles.black_text]}>{title}</Text>
+            <ImageBackground source={require('./bg.png')} resizeMode="cover" >
+            <View >
+            <Text style={[styles.MainfontSize, styles.black_text, {fontWeight: "bold"}]}>{title}</Text>
                 <View style={[styles.container1, {flexDirection: "row"}]}>
                 
                     <View style={[styles.button_wrapper, {flex: 1}]}>
-                            <TouchableOpacity style={[styles.Register_button]}  >
+                            <TouchableOpacity style={[styles.headButton]}  >
                                 <Text style={styles.white_text}>Edit</Text>
                             </TouchableOpacity>
                             <View style={{ flexGrow: 1 }}></View>
                     </View>
                     <View style={[styles.button_wrapper, {flex: 1}]}>
-                        <TouchableOpacity style={[styles.Register_button]} onPress={add_post} >
+                        <TouchableOpacity style={[styles.headButton]} onPress={add_post} >
                             <Text style={styles.white_text}>Post</Text>
                         </TouchableOpacity>
                         <View style={{ flexGrow: 1 }}></View>
                     </View>
                 </View>
             </View>
+
+            </ImageBackground>
+
+            
               
 
             <View style={styles.top2}>
@@ -181,12 +188,22 @@ const styles = StyleSheet.create({
         paddingBottom: 5
     },
     Register_button: {
-        paddingHorizontal: 60,
+        paddingHorizontal: 40,
         paddingVertical: 12,
         backgroundColor: "#0A656D",
         marginTop: 10,
-        marginBottom : 35,
+        marginBottom : 12,
         marginLeft: 10,
+        color: "white",
+        borderRadius: 30
+    },
+    headButton: {
+        paddingHorizontal: 20,
+        paddingVertical: 12,
+        backgroundColor: "#00373C",
+        marginTop: 10,
+        marginBottom : 35,
+        marginLeft: 80,
         color: "white",
         borderRadius: 30
     },

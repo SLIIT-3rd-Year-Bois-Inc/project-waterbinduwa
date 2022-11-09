@@ -8,7 +8,7 @@ import { ScrollView } from "react-native-gesture-handler";
 export default function AboutUs() {
     const navigation = useNavigation();
 
-    const para = "ROTO OF SLIIT";
+    const para = "Rotaract originally began as a Rotary International youth program in 1968 at Charlotte North Rotary Club in Charlotte, North Carolina, United States, and has grown into a major organization of 10,680 clubs spread around the world and over 203,000 members in 189 countries. Charlotte, North Carolina, United States, and has grown into a major organization of 10,680 clubs spread around the world ";
    
 
     return (
@@ -16,11 +16,15 @@ export default function AboutUs() {
             <ScrollView>
                 
             <View style={[styles.top]}>
-             <Text>About us</Text>
-             <Text>{para}</Text>      
-             <Text>About us</Text>
-             <Text>{para}</Text>  
-           
+             <Text style={{fontSize : 20, fontWeight : "bold", marginLeft : 20, marginTop : 20}}>About us</Text>
+             <Text style={{margin : 15}}>{para}</Text>      
+             <Text style={{margin : 15}}>{para}</Text>  
+            </View>
+
+            <View style={[styles.top]}>
+             <Text style={{fontSize : 20, fontWeight : "bold", marginLeft : 20, marginTop : 20}}>About us</Text>
+             <Text style={{margin : 15}}>{para}</Text>      
+             <Text style={{margin : 15}}>{para}</Text>  
             </View>
 
             </ScrollView>
@@ -42,7 +46,8 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     top: {
-        backgroundColor : "#c1dedd"
+        backgroundColor : "#c1dedd",
+        marginTop : 10 
     },
     top2: {
         backgroundColor : "pink"

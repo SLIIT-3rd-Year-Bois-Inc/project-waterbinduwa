@@ -4,6 +4,8 @@ const logo = require("../../assets/logo.png");
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import EditPosts from "../../../views/editPosts";
+import Post from "../../../components/posts";
 
 export default function Posts() {
     const navigation = useNavigation();
@@ -13,9 +15,23 @@ export default function Posts() {
 
     return (
         <View>
+
+            <Text style={{marginLeft : 130,  marginTop : 12,  fontSize : 25, color : "black", fontWeight : "bold"}}>Events & Posts</Text>     
+
             <View style={[styles.top]}>
-             <Text>About us</Text>
-             <Text>{para}</Text>              
+             <Post />             
+            </View>
+
+            <View style={[styles.top]}>
+             <Post />             
+            </View>
+
+            <View style={[styles.top]}>
+             <Post />             
+            </View>
+
+            <View style={[styles.top]}>
+             <Post />             
             </View>
         </View>
     )
@@ -31,7 +47,8 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     top: {
-        backgroundColor : "#c1dedd"
+        backgroundColor : "#c1dedd",
+        marginTop : 20
     },
     top2: {
         backgroundColor : "pink"
