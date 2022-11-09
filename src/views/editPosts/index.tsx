@@ -52,26 +52,27 @@ const EditPosts: React.FC<{ route: any }> = (props) => {
     try {
       // Save all images to the storage
       let urls:any='';
-      if(image && image.uri && image.uri.changed ){
-      let uploadTasks =async () => { 
-          let uri = image.uri;
-          if(uri) {
-              const response = await fetch(uri);
-              const blobFile = await response.blob();
-              return await uploadFile(blobFile);
-          }
-          
-       }
+      console.log(image)
+        let uploadTasks =async () => { 
+            let uri = image.uri;
+            if(uri) {
+                const response = await fetch(uri);
+                const blobFile = await response.blob();
+                return await uploadFile(blobFile);
+            }
+            
+        }
       
        urls= await uploadTasks();
-      }
+    
       console.log("image",image);
       let document = {
           type:"post",
           text: text,
-          images:image.uri
+          images:urls
       }
       console.log("working")
+      console.log(props.route.params.id)
       await firestore().collection("postsAndEvents").doc(props.route.params.id).update(document);
       console.log("added")
       goto_home();

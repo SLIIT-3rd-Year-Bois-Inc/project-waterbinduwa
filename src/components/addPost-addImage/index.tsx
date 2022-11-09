@@ -8,6 +8,7 @@ const AddPostAddImage: React.FC<{ btnName: string, setImage: any,uri:any }> = (p
   const [images, setImages] = useState<any>();
   useEffect(()=>{
     setImages({uri:props.uri.uri});
+    console.log("in if", props.uri);
   },[props.uri])
 
   const handleChoosePhoto = async () => {
@@ -18,10 +19,9 @@ const AddPostAddImage: React.FC<{ btnName: string, setImage: any,uri:any }> = (p
     if (!result.didCancel) {
 
       if (result.assets) {
-        let image = result.assets[0];
-        // Add image to the images array
-        setImages({uri:result.assets[0].uri,changed:true});
-        props.setImage({uri:result.assets[0].uri,changed:true});
+        console.log("here it is",result.assets[0])
+        props.setImage({uri:result.assets[0].uri,changed:true})
+        
       }
     }
 
