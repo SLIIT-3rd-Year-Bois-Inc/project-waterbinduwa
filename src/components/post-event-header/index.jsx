@@ -1,12 +1,17 @@
 import React from 'react'
 import { Text, View, StyleSheet,TouchableOpacity,Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from "@react-navigation/native";
 
 
-function PostEventHeader(props:any) {
+function PostEventHeader(props) {
+
+
     const handleshareClick=()=>{
 
     }
+   
+    console.log(props.id)
     return (
         <View style={styles.container}>
             <View style={styles.imageNameContainer}>
@@ -20,7 +25,7 @@ function PostEventHeader(props:any) {
 
             </View>
 
-            <TouchableOpacity onPress={()=>{props.toggleModel()}}>
+            <TouchableOpacity onPress={()=>{props.toggleModel()}} id={props.id}>
                 <Text style={styles.ellipsis}>
                     <Icon name="ellipsis-h" size={20} color="#000" />
                 </Text>

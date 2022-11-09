@@ -1,8 +1,16 @@
 import React from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View, useWindowDimensions } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-function EditDeleteOptions(props:any) {
+function EditDeleteOptions(props) {
+    const navigation = useNavigation();
     const width = useWindowDimensions().width * 0.5
+    console.log("model",props.id);
+    const goto_editPost = async () => {
+      props.toggleModel();
+      navigation.navigate("editPosts",{id:props.id});
+
+  }
   return (
     <Modal
         animationType="slide"
@@ -16,7 +24,10 @@ function EditDeleteOptions(props:any) {
           <View style={styles.modalView}>
           <Pressable
                 style={{minWidth:width}}
-              onPress={() => props.toggleModel()}
+              onPress={() => {
+                goto_editPost();
+                
+                }}
             >
               <Text style={styles.modalText} >Edit</Text>
             </Pressable>
