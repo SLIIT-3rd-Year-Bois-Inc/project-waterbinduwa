@@ -13,7 +13,8 @@ import { baseGestureHandlerProps } from "react-native-gesture-handler/lib/typesc
 export default function OrgHome() {
     const navigation = useNavigation();
 
-    const title = "Rotoract Club OF SLIIT";
+    const title = "Rotoract Club OF";
+    const subTitle = "Sri Lanka Institute of Information Technology";
 
     const [aboutUs, setAboutUs] = useState(true);
     const [posts, setPosts] = useState(false);
@@ -45,19 +46,21 @@ export default function OrgHome() {
             <ScrollView>
             
             <ImageBackground source={require('./bg.png')} resizeMode="cover" >
+            <Image source={require('./dp.png')} style={{ width: 110, height: 110, marginVertical: 20 , marginLeft : 150}} />
             <View >
-            <Text style={[styles.MainfontSize, styles.black_text, {fontWeight: "bold"}]}>{title}</Text>
+            <Text style={[styles.MainfontSize, styles.black_text, {fontWeight: "bold", marginLeft : 70, color : "white"}]}>{title}</Text>
+            <Text style={[styles.MainfontSize, styles.black_text, {fontWeight: "bold", marginLeft : 20, fontSize : 20, color : "white"}]}>{subTitle}</Text>
                 <View style={[styles.container1, {flexDirection: "row"}]}>
                 
                     <View style={[styles.button_wrapper, {flex: 1}]}>
                             <TouchableOpacity style={[styles.headButton]}  >
                                 <Text style={styles.white_text}>Edit</Text>
                             </TouchableOpacity>
-                            <View style={{ flexGrow: 1 }}></View>
+                            
                     </View>
-                    <View style={[styles.button_wrapper, {flex: 1}]}>
+                    <View style={[styles.button_wrapper, {flex: 1, marginRight : 50}]}>
                         <TouchableOpacity style={[styles.headButton]} onPress={add_post} >
-                            <Text style={styles.white_text}>Post</Text>
+                            <Text style={{fontSize: 20, color: "white"}}>Post</Text>
                         </TouchableOpacity>
                         <View style={{ flexGrow: 1 }}></View>
                     </View>
