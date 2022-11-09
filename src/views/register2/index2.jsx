@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity, ToastAndroid } from "react-native";
 const logo = require("../../assets/logo.png");
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import firestore from '@react-native-firebase/firestore';
+import { firebase } from '@react-native-firebase/auth';
 
 export default function VolRegister() {
     const [username, setUserName] = useState("");
