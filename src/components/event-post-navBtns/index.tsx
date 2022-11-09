@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-const EventPostNavBtns: React.FC<{ routeName: string }> = (props) => {
+const EventPostNavBtns: React.FC<{ routeName: string, onShare:()=>void }> = (props) => {
     const navigation = useNavigation();
     const onPostButtonClick=()=>{
         navigation.navigate("addPosts" as never);
@@ -12,18 +12,26 @@ const EventPostNavBtns: React.FC<{ routeName: string }> = (props) => {
     }
     return (
         <View style={styles.postEventBtnContainer}>
-            <Pressable
-                disabled = {!(props.routeName === 'addEvent')}
-                onPress={onPostButtonClick}
-                style={(props.routeName === 'addEvent')?styles.postButton :[styles.postButton, styles.clickedBtn]}
-            ><Text style={styles.btnText}>Post</Text>
+            <View style={styles.navBtns}>
+                <Pressable
+                    disabled = {!(props.routeName === 'addEvent')}
+                    onPress={onPostButtonClick}
+                    style={(props.routeName === 'addEvent')?styles.postButton :[styles.postButton, styles.clickedBtn]}
+                ><Text style={styles.btnText}>Post</Text>
 
-            </Pressable>
+                </Pressable>
+                <Pressable
+                disabled = {(props.routeName === 'addEvent')}
+                    onPress={onEventButtonClick}
+                    style={(props.routeName === 'addEvent')?[styles.eventButton,styles.clickedBtn] :styles.eventButton}
+                ><Text style={styles.btnText}>Event</Text>
+
+                </Pressable>
+            </View>
             <Pressable
-            disabled = {(props.routeName === 'addEvent')}
-                onPress={onEventButtonClick}
-                style={(props.routeName === 'addEvent')?[styles.eventButton,styles.clickedBtn] :styles.eventButton}
-            ><Text style={styles.btnText}>Event</Text>
+                onPress={props.onShare}
+                style={styles.shareBtn}
+            ><Text style={styles.btnText}>Share</Text>
 
             </Pressable>
 
@@ -32,6 +40,12 @@ const EventPostNavBtns: React.FC<{ routeName: string }> = (props) => {
     )
 }
 const styles = StyleSheet.create({
+    navBtns:{
+        display:'flex',
+        flexDirection:'row',
+        height:32
+    }
+    ,
     eventButton: {
         borderTopRightRadius: 15,
         backgroundColor: '#16DAED',
@@ -58,9 +72,21 @@ const styles = StyleSheet.create({
     },
     postEventBtnContainer: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent:'space-between'
     },clickedBtn:{
         backgroundColor: '#16DAED77',
+    },
+    shareBtn: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 8,
+        paddingLeft: 15,
+        paddingRight: 15,
+        marginRight: 10,
+        backgroundColor: '#11ACBA',
+        borderRadius: 20
     }
 });
 export default EventPostNavBtns

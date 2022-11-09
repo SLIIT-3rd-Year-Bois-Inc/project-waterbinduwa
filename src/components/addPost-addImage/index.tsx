@@ -4,51 +4,65 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { launchImageLibrary } from 'react-native-image-picker';
 
 
-const AddPostAddImage:React.FC<{btnName:string}> =(props)=> {
-  const [images, setImages ] = useState<any>();
-    
+const AddPostAddImage: React.FC<{ btnName: string, setImage: any,uri:any }> = (props) => {
+  const [images, setImages] = useState<any>();
+  useEffect(()=>{
+    setImages({uri:props.uri.uri});
+  },[props.uri])
+
   const handleChoosePhoto = async () => {
-      let result = await launchImageLibrary({
-          mediaType:"photo"
-      });
-      setImages(result)
+    let result = await launchImageLibrary({
+      mediaType: "photo"
+    });
+
+    if (!result.didCancel) {
+
+      if (result.assets) {
+        let image = result.assets[0];
+        // Add image to the images array
+        setImages({uri:result.assets[0].uri,changed:true});
+        props.setImage({uri:result.assets[0].uri,changed:true});
+      }
+    }
+
   }
   const handleRemovePhoto = async () => {
     setImages(null)
-}
+    props.setImage({uri:'',changed:false});
+  }
   return (
     <View>
-      {images?.assets &&
-          images?.assets.map(({uri}: {uri: string}) =>(<View key={uri}>
+      {images && images.uri &&
+      (<View key={images.uri}>
         <Image
           style={styles.image}
-          source={{uri: uri}}
+          source={{ uri: images.uri }}
         />
-      </View>))
-        
+      </View>)}
 
-      }
-       
+
+
+
 
       <View style={styles.addImageBtnContainer}>
-        {images?.assets? <Pressable
+        {images && images.uri? <Pressable
           onPress={handleRemovePhoto}
           style={styles.addImageBtn}
         ><Icon name="image" size={20} color="#fff" /><Text style={[styles.btnText, styles.addImageBtnTxt]}>
             Remove Image
           </Text>
 
-        </Pressable>:
-        <Pressable
-          onPress={handleChoosePhoto}
-          style={styles.addImageBtn}
-        ><Icon name="image" size={20} color="#fff" /><Text style={[styles.btnText, styles.addImageBtnTxt]}>
-            {props.btnName}
-          </Text>
+        </Pressable> :
+          <Pressable
+            onPress={handleChoosePhoto}
+            style={styles.addImageBtn}
+          ><Icon name="image" size={20} color="#fff" /><Text style={[styles.btnText, styles.addImageBtnTxt]}>
+              {props.btnName}
+            </Text>
 
-        </Pressable>
+          </Pressable>
         }
-        
+
 
       </View>
     </View>
@@ -85,9 +99,9 @@ const styles = StyleSheet.create({
   },
   addImageBtnTxt: {
     paddingLeft: 6
-  },image:{
-    height:300,
-    width:'100%'
+  }, image: {
+    height: 300,
+    width: '100%'
   }
 });
 

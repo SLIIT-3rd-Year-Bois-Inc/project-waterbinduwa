@@ -35,7 +35,8 @@ export default function AddReview({ name }: AddReviewProps) {
     const save_review = async () => {
         try {
             // Save all images to the storage
-            
+            console.log("image",images);
+            return
             let uploadTasks = images.map(async (image) => { 
                 let uri = image.uri;
                 if(uri) {
