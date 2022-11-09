@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity, ToastAndroid } from "react-native";
 const logo = require("../../assets/logo.png");
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 import GeneralStatusBarColor from "../../components/GeneralStatusBarColor/GeneralStatusBarColor";
+import firestore from '@react-native-firebase/firestore';
 
 export default function Login() {
     const [username, setUserName] = useState("");
@@ -14,8 +15,50 @@ export default function Login() {
 
     const login = async () => {
         try {
+            if(!username) {
+                ToastAndroid.showWithGravity(
+                    "The email cannot be empty",
+                    ToastAndroid.SHORT,
+                    ToastAndroid.CENTER
+                  );
+                return;
+            }
+
+            if(!password) {
+                ToastAndroid.showWithGravity(
+                    "Password cannot be empty",
+                    ToastAndroid.SHORT,
+                    ToastAndroid.CENTER
+                  );
+            }
+
+            if(password.length < 6) {
+                ToastAndroid.showWithGravity(
+                    "Password is too short",
+                    ToastAndroid.SHORT,
+                    ToastAndroid.CENTER
+                  );
+                return;
+            }
             await auth().signInWithEmailAndPassword(username, password);
             console.log("Successfully logged in ", username, password);
+            let user = await firestore().collection("orgPerson").where("email", "==",username.toLowerCase()).get();
+
+            if(!user || !user.docs || user.docs.length == 0) {
+                console.log("No users with this email");
+                navigation.navigate("MainHome" as never);
+                return;
+            }
+
+            let user_data = user.docs[0].data();
+
+            if(user_data) {
+                if(user_data.type == "org") {
+                    navigation.navigate("orgHome" as never);
+                    return;
+                }
+            }
+
             navigation.navigate("MainHome" as never);
         }catch(e){
             console.error(e);
