@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity , ToastAndroid} from "react-native";
 const logo = require("../../assets/logo.png");
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
@@ -20,16 +20,48 @@ export default function OrgRegister() {
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
 
-    const register = async () => {
-    //     try {
-    //         await auth().signInWithEmailAndPassword(username, password);
-    //         console.log("Successfully logged in ", username, password);
-    //         // navigation.navigate("MainHome" as never);
-    //     }catch(e){
-    //         console.error(e);
-    //     }
-    // console.log("works reg");
+
+    const checkPW = async () => {
+        if (password === conPassword && password != ""){
+            register();
+        }else {
+            showToastWithGravity();
+        }
     }
+
+    const showToastWithGravity = () => {
+        ToastAndroid.showWithGravity(
+          "Password Does not Match",
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );
+      };
+
+    const register = async () => {
+        try {            
+            let document = {
+                orgName : orgName,
+                intro : intro,
+                orgEmail : orgEmail,
+                orgPhone : orgPhone,
+                website : website,
+                address : address,
+                username : username,
+                position : position,
+                email : email,
+                phone : phone,
+                password : password,
+                uid: "", // TODO - Add firebase auth uid,
+                org_id: "" // TODO - Add org id
+            }
+
+            await firestore().collection("orgPerson").add(document);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+  
     
     return (
         <View>
@@ -98,7 +130,7 @@ export default function OrgRegister() {
 
                     {/* <Text style={[{ textAlign: "right", paddingHorizontal: 10, paddingTop: 8 }, styles.teal_text]}>Forgot Password?</Text> */}
                     <View style={[styles.button_wrapper, {paddingVertical: 20}]}>
-                        <TouchableOpacity style={[styles.Register_button]} onPress={register} >
+                        <TouchableOpacity style={[styles.Register_button]} onPress={checkPW} >
                             <Text style={styles.white_text}>Register</Text>
                         </TouchableOpacity>
                         <View style={{ flexGrow: 1 }}></View>
