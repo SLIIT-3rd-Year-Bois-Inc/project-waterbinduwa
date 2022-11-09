@@ -14,15 +14,70 @@ export default function VolRegister() {
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
 
+    const [errors, setErrors] = useState(" ");
+
+
+    const checkPW = async () => {
+        if (password === conPassword && password != ""){
+            register();
+        }else {
+            showToastWithGravity();
+        }
+    }
+
+    const showToastWithGravity = () => {
+        ToastAndroid.showWithGravity(
+          "Password Does not Match",
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );
+      };
+
+    
+      const showToastWithGravity4 = (data) => {
+        ToastAndroid.showWithGravity(
+          data,
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );
+      };
+
     const register = async () => {
-    //     try {
-    //         await auth().signInWithEmailAndPassword(username, password);
-    //         console.log("Successfully logged in ", username, password);
-    //         // navigation.navigate("MainHome" as never);
-    //     }catch(e){
-    //         console.error(e);
-    //     }
-    // console.log("works reg");
+        try{
+            setErrors(" ");
+            firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredentials) => {
+                return userCredentials.user.updateProfile({name : email});
+            }).catch((error) => setErrors(error));
+
+            if (errors == " "){
+                registerDetails();
+                navigation.navigate("Login");
+            }else {
+                showToastWithGravity4("Details already exist.")
+            }
+        }catch (e) {
+            showToastWithGravity4("Something went wrong");
+            console.error(e);
+        }
+    }
+
+    const registerDetails = async () => {
+        try {            
+            let document = {
+                username : username,
+                address : address,
+                email : email,
+                phone : phone,
+                password : password,
+                type : "vol",
+            }
+
+            await firestore().collection("orgPerson").add(document);
+            showToastWithGravity4("Success");
+        } catch (e) {
+            showToastWithGravity4("Something went wrong");
+            console.error(e);
+        }
     }
     
     return (
@@ -68,7 +123,7 @@ export default function VolRegister() {
 
                     {/* <Text style={[{ textAlign: "right", paddingHorizontal: 10, paddingTop: 8 }, styles.teal_text]}>Forgot Password?</Text> */}
                     <View style={[styles.button_wrapper, {paddingVertical: 20}]}>
-                        <TouchableOpacity style={[styles.Register_button]} onPress={register} >
+                        <TouchableOpacity style={[styles.Register_button]} onPress={checkPW} >
                             <Text style={styles.white_text}>Register</Text>
                         </TouchableOpacity>
                         <View style={{ flexGrow: 1 }}></View>
