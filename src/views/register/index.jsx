@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity , ToastAndroid} from "react-native";
 const logo = require("../../assets/logo.png");
-import auth from '@react-native-firebase/auth';
+import auth, { firebase } from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import firestore from '@react-native-firebase/firestore';
 
 export default function OrgRegister() {
     const [orgName, setOrgName] = useState("");
@@ -19,6 +20,8 @@ export default function OrgRegister() {
     const [conPassword, setConPassword] = useState("");
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
+
+    const [errors, setErrors] = useState(" ");
 
 
     const checkPW = async () => {
@@ -37,7 +40,35 @@ export default function OrgRegister() {
         );
       };
 
+    
+      const showToastWithGravity4 = (data) => {
+        ToastAndroid.showWithGravity(
+          data,
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );
+      };
+
     const register = async () => {
+        try{
+            setErrors(" ");
+            firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredentials) => {
+                return userCredentials.user.updateProfile({name : email});
+            }).catch((error) => setErrors(error));
+
+            if (errors == " "){
+                registerDetails();
+                navigation.navigate("Login");
+            }else {
+                showToastWithGravity4("Details already exist.")
+            }
+        }catch (e) {
+            showToastWithGravity4("Something went wrong");
+            console.error(e);
+        }
+    }
+
+    const registerDetails = async () => {
         try {            
             let document = {
                 orgName : orgName,
@@ -51,12 +82,13 @@ export default function OrgRegister() {
                 email : email,
                 phone : phone,
                 password : password,
-                uid: "", // TODO - Add firebase auth uid,
-                org_id: "" // TODO - Add org id
+                type : "org",
             }
 
             await firestore().collection("orgPerson").add(document);
+            showToastWithGravity4("Success");
         } catch (e) {
+            showToastWithGravity4("Something went wrong");
             console.error(e);
         }
     }
