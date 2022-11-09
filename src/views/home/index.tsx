@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import firestore from '@react-native-firebase/firestore';
 import Post from "../../components/posts";
 import Event from "../../components/event/Index";
+import Posts from "../posts";
 
 
 export function Home() {
@@ -67,9 +68,8 @@ export function Home() {
             <Button title="addReview" onPress={goto_add_review}/>
             <Button title="regpicker" onPress={goto_reg_pick}/>
             <Button title="orgRegister" onPress={goto_org_register}/>
-            <Post/>
-            <Event/>
-            <Post/>
+            <Posts/>
+          
             
             </ScrollView>
             

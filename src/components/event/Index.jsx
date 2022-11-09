@@ -4,15 +4,15 @@ import PostEventHeader from '../post-event-header'
 import EventBody from './EventBody';
 import EventReactionBar from './EventReactionBar';
 
-function Event() {
+function Event(props) {
     return (
         <View style={styles.container}>
             <PostEventHeader />
-            <Image
+            {props.data.data().images && <Image
                 style={styles.postImage}
-                source={{ uri: 'https://www.unicef.org/mena/sites/unicef.org.mena/files/styles/hero_desktop/public/What-we-do_MENA_WASH_Block01.jpg?itok=wpUH04-V' }}
-            />
-            <EventBody/>
+                source={{uri:props.data.data().images}}
+            />}
+            <EventBody data={props.data}/>
             <EventReactionBar/>
             
         </View>
