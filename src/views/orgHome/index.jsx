@@ -32,6 +32,11 @@ export default function OrgHome() {
         setPosts(false);
         setReviews(true);
     }
+
+    const add_post = () => {
+        navigation.navigate("addPosts");
+    }
+   
     
     return (
         <View>
@@ -48,7 +53,7 @@ export default function OrgHome() {
                             <View style={{ flexGrow: 1 }}></View>
                     </View>
                     <View style={[styles.button_wrapper, {flex: 1}]}>
-                        <TouchableOpacity style={[styles.Register_button]}  >
+                        <TouchableOpacity style={[styles.Register_button]} onPress={add_post} >
                             <Text style={styles.white_text}>Post</Text>
                         </TouchableOpacity>
                         <View style={{ flexGrow: 1 }}></View>
@@ -59,7 +64,7 @@ export default function OrgHome() {
 
             <View style={styles.top2}>
                 <View style={[styles.button_wrapper]}>
-                    <TouchableOpacity style={[styles.Register_button]}  >
+                    <TouchableOpacity style={[styles.Register_button]}   >
                         <Text style={styles.white_text}>Messages</Text>
                     </TouchableOpacity>
                     <View style={{ flexGrow: 1 }}></View>
