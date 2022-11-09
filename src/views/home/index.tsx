@@ -51,6 +51,9 @@ export function Home() {
     const goto_reg_pick = () => {
         navigation.navigate("regpicker" as never);
     }
+    const goto_org_home = () => {
+        navigation.navigate("orgHome" as never);
+    }
     return (
         <View>
             <ScrollView>
@@ -67,6 +70,7 @@ export function Home() {
             <Button title="addReview" onPress={goto_add_review}/>
             <Button title="regpicker" onPress={goto_reg_pick}/>
             <Button title="orgRegister" onPress={goto_org_register}/>
+            <Button title="orgHome" onPress={goto_org_home}/>
             <Post/>
             <Event/>
             <Post/>

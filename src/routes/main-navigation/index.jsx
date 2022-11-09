@@ -11,7 +11,8 @@ import Event from "../../components/event/Index";
 import AddReview from "../../views/addReview";
 import OrgReg from "../../views/register/index"
 import VolReg from "../../views/register2/index2";
-import RegPick from "../../views/regPicker"
+import RegPick from "../../views/regPicker";
+import OrgHome from "../../views/orgHome";
 
 
 const Stack = createStackNavigator();
@@ -33,6 +34,7 @@ export function MainNavigator() {
             <Stack.Screen name="orgRegister" component={OrgReg} />
             <Stack.Screen name="volRegister" component={VolReg} />
             <Stack.Screen name="regpicker" component={RegPick} />
+            <Stack.Screen name="orgHome" component={OrgHome} />
         </Stack.Navigator>
     )
 }
