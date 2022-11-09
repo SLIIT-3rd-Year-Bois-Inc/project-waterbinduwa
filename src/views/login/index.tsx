@@ -3,11 +3,14 @@ import { View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } fr
 const logo = require("../../assets/logo.png");
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
+import GeneralStatusBarColor from "../../components/GeneralStatusBarColor/GeneralStatusBarColor";
 
 export default function Login() {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const navigation = useNavigation();
+    const [hidden, setHidden] = useState(false);
+  
 
     const login = async () => {
         try {
@@ -20,7 +23,9 @@ export default function Login() {
     }
     
     return (
-        <View>
+        <View style={styles.color}>
+            <GeneralStatusBarColor backgroundColor="#11ACBA"
+      barStyle="light-content"/>
             <View style={styles.logo_container}>
                 <Image style={styles.logo} source={logo}></Image>
                 <View style={styles.form}>
@@ -35,7 +40,7 @@ export default function Login() {
                         secureTextEntry={true}
                         placeholder="Password"
                     />
-                    <Text style={[{ textAlign: "right", paddingHorizontal: 10, paddingTop: 8 }, styles.teal_text]}>Forgot Password?</Text>
+                    <Text style={[{ textAlign: "right", paddingHorizontal: 10, paddingTop: 8 }, styles.gray_text]}>Forgot Password?</Text>
                     <View style={styles.button_wrapper}>
                         <TouchableOpacity style={styles.login_button} onPress={login} >
                             <Text style={styles.white_text}>Login</Text>
@@ -51,16 +56,24 @@ export default function Login() {
 const styles = StyleSheet.create({
     container: {
         height: "100%",
-        width: "100%"
+        width: "100%",
+        
     },
     logo: {
-        width: "50%",
+        width: "45%",
+        
+        marginVertical: 15
     },
     logo_container: {
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 60
+        marginTop: 60,
+    },
+    color : {
+        backgroundColor : "#11ACBA",
+        height: "100%",
+        width: "100%",
     },
     form: {
         width: "100%",
@@ -68,10 +81,9 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     text_input: {
-        borderColor: "#11acba",
-        borderWidth: 2,
         paddingHorizontal: 20,
-        borderRadius: 20
+        borderRadius: 20,
+        backgroundColor : "white"
     },
     label_padding: {
         paddingHorizontal: 10,
@@ -80,11 +92,11 @@ const styles = StyleSheet.create({
     login_button: {
         paddingHorizontal: 60,
         paddingVertical: 12,
-        backgroundColor: "#11acba",
-        marginTop: 30,
-        marginLeft: 10,
+        backgroundColor: "#00646D",
+        marginTop: 60,
+        marginLeft: 0,
         color: "white",
-        borderRadius: 30
+        borderRadius: 30,
     },
     button_wrapper: {
         width: "100%",
@@ -95,6 +107,9 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     teal_text: {
-        color: "#11acba"
+        color: "white"
+    },
+    gray_text: {
+        color: "#282828"
     }
 });
