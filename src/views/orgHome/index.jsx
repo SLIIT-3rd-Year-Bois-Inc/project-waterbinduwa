@@ -44,7 +44,7 @@ export default function OrgHome() {
             
             <View style={styles.top}>
             <Text style={[styles.MainfontSize, styles.black_text]}>{title}</Text>
-                <View style={[styles.container2, {flexDirection: "row"}]}>
+                <View style={[styles.container1, {flexDirection: "row"}]}>
                 
                     <View style={[styles.button_wrapper, {flex: 1}]}>
                             <TouchableOpacity style={[styles.Register_button]}  >
@@ -71,26 +71,57 @@ export default function OrgHome() {
                 </View>
 
                 <View style={[styles.container2, {flexDirection: "row"}]}>
-                    <View style={{ flex: 1, backgroundColor: "teal", padding : 20, marginLeft : 5 }}>
+                    {aboutUs ? 
+                    <View style={{ flex: 1, backgroundColor: "#2D9AA3", padding : 20, marginLeft : 5, borderRadius : 30, borderStyle : "solid", borderWidth : 2, justifyContent: "center", alignItems: "center" }}>
                         <TouchableOpacity onPress={do_about} >
-                        <Image source={require('./buttons/about.png')} style={{ width: 95, height: 95 }} />
+                        <Image source={require('./buttons/about.png')} style={{ width: 60, height: 70 ,}} />
                         <Text>About us</Text>
                         </TouchableOpacity>
                     </View >
+                    : 
+                    <View style={{ flex: 1, backgroundColor: "#85C9CE", padding : 20, marginLeft : 5, borderRadius : 30,  justifyContent: "center", alignItems: "center" }}>
+                        <TouchableOpacity onPress={do_about} >
+                        <Image source={require('./buttons/about.png')} style={{ width: 60, height: 70 ,}} />
+                        <Text>About us</Text>
+                        </TouchableOpacity>
+                    </View >
+                    }
 
-                    <View style={{ flex: 1, backgroundColor: "teal", padding : 20, marginLeft : 5   }} onPress={do_post}>
+                    {posts ? 
+                    <View style={{ flex: 1, backgroundColor: "#2D9AA3", padding : 20, marginLeft : 5, borderRadius : 30, borderStyle : "solid", borderWidth : 2, justifyContent: "center", alignItems: "center" }} onPress={do_post}>
+                    <TouchableOpacity onPress={do_post} >
+                    <Image source={require('./buttons/posts.png')} style={{ width: 60, height: 70 }} />
+                    <Text style={{alignItems:"center"}}>Posts</Text>
+                    </TouchableOpacity>
+                    </View>
+                    :
+                    <View style={{ flex: 1, backgroundColor: "#85C9CE", padding : 20, marginLeft : 5, borderRadius : 30 , justifyContent: "center", alignItems: "center"  }} onPress={do_post}>
                         <TouchableOpacity onPress={do_post} >
-                        <Image source={require('./buttons/posts.png')} style={{ width: 95, height: 95}} />
-                        <Text>Posts</Text>
+                        <Image source={require('./buttons/posts.png')} style={{ width: 60, height: 70 }} />
+                        <Text style={{alignItems:"center"}}>Posts</Text>
                         </TouchableOpacity>
                     </View>
+                    }
 
-                    <View style={{ flex: 1, backgroundColor: "teal", padding : 20, marginLeft : 5  }} onPress={do_review}>
-                        <TouchableOpacity onPress={do_review} >
-                        <Image source={require('./buttons/rev.png')} style={{ width: 95, height: 95 }} />
-                        <Text>Reviews</Text>
-                        </TouchableOpacity>
+                    {reviews ?
+                    <View style={{ flex: 1, backgroundColor: "#2D9AA3", padding : 20, marginLeft : 5, borderRadius : 30, borderStyle : "solid", borderWidth : 2, justifyContent: "center", alignItems: "center"}} onPress={do_review}>
+                    <TouchableOpacity onPress={do_review} >
+                    <Image source={require('./buttons/rev.png')} style={{ width: 60, height: 70 }} />
+                    <Text>Reviews</Text>
+                    </TouchableOpacity>
                     </View>
+                    :
+                    <View style={{ flex: 1, backgroundColor: "#85C9CE", padding : 20, marginLeft : 5, borderRadius : 30 , justifyContent: "center", alignItems: "center" }} onPress={do_review}>
+                    <TouchableOpacity onPress={do_review} >
+                    <Image source={require('./buttons/rev.png')} style={{ width: 60, height: 70 }} />
+                    <Text>Reviews</Text>
+                    </TouchableOpacity>
+                    </View>
+                    }
+
+                    
+
+                    
                 </View>
                 
             </View>
@@ -110,15 +141,20 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%"
     },
-    container2: {
+    container1: {
         flex: 0,
         padding: 10,
     },
+    container2: {
+        flex: 0,
+        padding: 10,
+        paddingBottom : 50
+    },
     top: {
-        backgroundColor : "gray"
+        backgroundColor : "#41A7B5"
     },
     top2: {
-        backgroundColor : "pink"
+        backgroundColor : "#DAF4F7"
     },
     logo: {
         width: "50%",
@@ -147,7 +183,7 @@ const styles = StyleSheet.create({
     Register_button: {
         paddingHorizontal: 60,
         paddingVertical: 12,
-        backgroundColor: "#11acba",
+        backgroundColor: "#0A656D",
         marginTop: 10,
         marginBottom : 35,
         marginLeft: 10,
@@ -178,5 +214,9 @@ const styles = StyleSheet.create({
         fontSize : 20,
         // justifyContent: "left",
         // alignItems: "left",
-    }
+    },
+    center : {
+        justifyContent: "center",
+        alignItems: "center",
+    },
 });

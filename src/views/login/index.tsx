@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
         marginLeft: 0,
         color: "white",
         borderRadius: 30,
-        
     },
     button_wrapper: {
         width: "100%",
